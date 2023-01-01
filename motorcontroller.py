@@ -1,8 +1,8 @@
 from adafruit_servokit import ServoKit
 kit = ServoKit(channels=16)
 
-REST_POSITION = [60, 180, 180, 180, 0]
-VIEW_POSITION = [60, 0, 270, 130, 0]
+REST_POSITION = [60, 180, 180, 90, 0]
+VIEW_POSITION = [60, 0, 270, 180, 0]
 TURN_OFF = [None, None, None, None, None]
 
 class MotorController():
@@ -15,7 +15,7 @@ class MotorController():
         self.motor_2 = kit.servo[2] # max is 90
         self.motor_2.actuation_range = 270
         self.motor_3 = kit.servo[3]
-        self.motor_3.actuation_range = 180
+        self.motor_3.actuation_range = 180 # range is 30, 180
         self.motor_4 = kit.servo[4] # base motor
         self.motor_4.actuation_range = 360
 
@@ -32,7 +32,7 @@ class MotorController():
     def move_rest_position(self):
         self.move_position(REST_POSITION)
 
-    def off_position(self):
+    def move_off_position(self):
         self.move_position(TURN_OFF)
         self.motor_3.fraction = None
         self.motor_4.fraction = None
