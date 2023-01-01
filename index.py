@@ -16,10 +16,12 @@ def main():
             print(brightness)
             if brightness < vision.THRESHOLD_LIGHTNESS:
                 # if color is dark then move to rest position
+                print("move rest position")
                 motorController.move_rest_position()
             else:
                 # else color is white then move to view position
-                motorController.move_position([60, 0, 170, 180, 0])
+                print("move view position")
+                motorController.move_position(motorController.VIEW_POSITION)
             
     except KeyboardInterrupt:
         # turn off everything
