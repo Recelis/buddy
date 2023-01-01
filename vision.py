@@ -1,6 +1,4 @@
 import cv2
-import math
-from PIL import ImageStat
 class Vision():
     def __init__( self ):
         super().__init__( )
@@ -8,7 +6,7 @@ class Vision():
         self.cam = cv2.VideoCapture('/dev/video0')
         self.frame = None
         
-    THRESHOLD_LIGHTNESS = 0
+    THRESHOLD_LIGHTNESS = 110
 
     def get_image(self):
         # Capture frame-by-frame
@@ -21,9 +19,9 @@ class Vision():
         self.frame = frame
 
     def get_brightness(self):
-        stat = ImageStat.Stat(self.frame)
-        r,g,b = stat.mean
-        return math.sqrt(0.241*(r**2) + 0.691*(g**2) + 0.068*(b**2))
+        hsv_img = cv2.cvtColor(self.frame, cv2.COLOR_BGR2HSV)
+        mean = hsv_img[...,2].mean()
+        return mean
 
     def get_distance(self):
         pass
