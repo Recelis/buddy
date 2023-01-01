@@ -8,17 +8,22 @@ vision = Vision()
 motorController = MotorController()
 
 def main():
-    motorController.move_rest_position()
-    time.sleep(10)
-    while(True):
-        vision.get_image()
-        
-        motorController.move_position([60, 180, 270, 180, 0])
+    try:
         time.sleep(10)
-        motorController.move_off_position()
-        time.sleep(10)
+        while(True):
+            vision.get_image()
+            # detect color of image
 
+            # if color is dark then move to rest position
+            motorController.move_rest_position()
+            time.sleep(10)
+            # else color is white then move to view position
+            motorController.move_position([60, 180, 270, 180, 0])
+            time.sleep(10)
+    except KeyboardInterrupt:
+        motorController.move_off_position()
+        vision.release_camera()
+        
 if __name__ == '__main__':
-    motorController.move_off_position()
-    vision.release_camera()
+    # turn off everything
     sys.exit(main())
