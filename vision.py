@@ -6,7 +6,7 @@ class Vision():
         self.cam = cv2.VideoCapture('/dev/video0')
         self.frame = None
         
-    THRESHOLD_LIGHTNESS = 110
+    THRESHOLD_LIGHTNESS = 150
 
     def get_image(self):
         # Capture frame-by-frame
@@ -14,8 +14,8 @@ class Vision():
 
         # Display the resulting frame
         print('video test')
-        cv2.imshow('Video Test', frame)
-        cv2.waitKey(1)
+        # cv2.imshow('Video Test', frame)
+        # cv2.waitKey(1)
         self.frame = frame
 
     def get_brightness(self):

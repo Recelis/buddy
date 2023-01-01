@@ -18,8 +18,8 @@ class MotorController():
         self.motor_4 = kit.servo[4] # base motor
         self.motor_4.actuation_range = 360
 
-        self.REST_POSITION = [60, 180, 330, 180, 0]
-        self.VIEW_POSITION = [60, 90, 170, 180, 0]
+        self.REST_POSITION = [60, 180, 350, 180, 180]
+        self.VIEW_POSITION = [60, 60, 90, 180, 0]
         self.TURN_OFF = [None, None, None, None, None]
 
     # functions
