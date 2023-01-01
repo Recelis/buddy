@@ -1,8 +1,8 @@
 from adafruit_servokit import ServoKit
 kit = ServoKit(channels=16)
 
-REST_POSITION = [60, 180, 180, 90, 0]
-VIEW_POSITION = [60, 0, 270, 180, 0]
+REST_POSITION = [60, 180, 0, 90, 0]
+VIEW_POSITION = [60, 0, 0, 0, 0]
 TURN_OFF = [None, None, None, None, None]
 
 class MotorController():
